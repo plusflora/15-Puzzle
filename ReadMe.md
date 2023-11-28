@@ -5,6 +5,16 @@
 ##Overview
 
 ##Wireframes / Screenshots
+Upon Page Load
+![Page Load](assets/Page%20Load.png)
+Expected changes during gameplay
+![During Game](assets/During%20Game.png)
+Upon Completion
+![Upon Completion](assets/Upon%20Completion.png)
+After Game + Restart
+![After Game](assets/After%20Game.png)
+
+
 
 ##User Stories
 - choose when to start
