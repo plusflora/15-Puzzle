@@ -35,13 +35,16 @@ After Game + Restart
 
 ## Plan of Attack
 - build 3/3 board - Done
-- "remove" 1 piece and maintain grid - Done
-- build piece movement - in progress
+- "remove" 1 piece and maintain grid - Done (done by assigning a class 'empty' to the piece)
+- build piece movement - in progress 
+- //Need event listener(Done, console logged out)
+- //and a function to "move" the piece (is it better to split the code between multiple functions?)
+- //
 - expand to 4x4
 - get shuffle/starting placement to work
 - get move count to work
 - get restart/shuffle button working
 - build check win
 - build save best move count
-- get hover effect on piece
+- get hover effect on piece - Done
 - any bonuses listed in User Stories I can get in time for turn in.

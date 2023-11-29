@@ -1,4 +1,4 @@
-// console.log('js is linked') smoke test
+console.log('js is linked') //smoke test
 
 /*----- constants -----*/
 //win condition
@@ -45,23 +45,41 @@ function genRandomBoard() {
     //this gens pieces that give the id of tile so that they appear when a number (1-15) is in the space
 }
 
-//Show tile - when a tile with a valid number is in a class 
+//move tile
+//swaps the tiles if a spot that is orthognally connected is "empty" 
+//is handling it by innertext or by class better?
+
+
+function checkForEmpty(colIdx, rowIdx) {
+    //checking to the left
+    const checkLeft = 
+    //checking to the right
+    const checkRight = 
+}
+
+function moveTile() {
+    //so I need it to check orthognally connected tiles for "empty" 
+    //if no tiles are "empty" - return
+    //if a tile is empty - swap innertext and the classes "tile" and "empty"
+    //probably using a classList.remove('tile, empty') and classList.add('empty')
+}
 
 //handleChoice - checks to see if the piece is a valid option
 //checks to see if the piece can move - returns if it can't
+function handleChoice(evt) {
+    //if the option clicked is not a "tile" return. we do this by searching for the class empty
+    if(evt.target.classList.contains('empty')) { return }
+    console.log('this is what was clicked: \n', evt.target.className)
 
-//move tile
-//swaps the pieces if a spot that is orthognally connected is "empty"
-function moveTile()
+    //
+}
 
-//check win - checks to see if pieces are in a "win" order
+//check win - checks to see if tile are in a "win" order
 
 /*----- event listeners -----*/
 //shuffle board/start button
-//
 
 //piece selection -> tells the handleChoice selection which piece to move and where it moves
-
-//hover for piece selection
+document.querySelector('div').addEventListener('click', handleChoice)
 
 /*----- what's the haps -----*/
