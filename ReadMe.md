@@ -18,8 +18,6 @@ Upon Completion
 After Game + Restart
 ![After Game](assets/After%20Game.png)
 
-
-
 ## User Stories
 - choose when to start
 - click on the square to move it
