@@ -3,6 +3,7 @@
 ## Idea - 15 Puzzle
 
 ## Overview
+A fifteen puzzle is a simple puzzle game. The goal is to get the numbered tiles in order from 1-15.
 
 ## Wireframes / Screenshots
 Upon Page Load
@@ -22,11 +23,12 @@ After Game + Restart
 ## User Stories
 - choose when to start
 - click on the square to move it
-- have a timer
 - count number of moves
 - play again button
-- save and compare against best time
-- dark mode / light mode
+
+- save and compare against lowest number of moves
+- Bonus: dark mode / light mode
+- Bonus: have a timer + save fastest time
 - Bonus: click to move 2 squares 
 - Bonus: Visual Movement instead of instant swaps
 - Bonus: use a (random?) image + fill in blank spot when puzzle is completed
