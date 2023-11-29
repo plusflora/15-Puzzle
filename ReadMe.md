@@ -32,3 +32,15 @@ After Game + Restart
 - Bonus: have a timer + save fastest time
 - Bonus: use a (random?) image + fill in blank spot when puzzle is completed
 - Bonus: choose which solve counts (reverse, odds on top, evens on top, columns)
+
+## Plan of Attack
+- build 2x2 board
+- build piece movement
+- expand to 4x4
+- get shuffle/starting placement to work
+- get move count to work
+- get restart/shuffle button working
+- build check win
+- build save best move count
+- get hover effect on piece
+- any bonuses listed in User Stories I can get in time for turn in.
