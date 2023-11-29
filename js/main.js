@@ -1,12 +1,13 @@
 // console.log('js is linked') smoke test
 
 /*----- constants -----*/
-//win conditions
+//win condition
 
 //best move count
 
 /*----- initial state variables -----*/
 //move count
+let moveCount 
 
 //completion
 
@@ -14,8 +15,6 @@
 //init func
 
 //start/restart button visibility and what it does
-
-//randomizer for grid
 
 //move count count++
 
@@ -25,7 +24,9 @@
 
 //check win
 
-//handleChoice - checks to see if the piece is valid and where it can move then moves it
+//handleChoice - checks to see if the piece is valid
+
+//shift piece
 
 /*----- event listeners -----*/
 //shuffle board/start button
