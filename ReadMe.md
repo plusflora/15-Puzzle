@@ -43,7 +43,8 @@ After Game + Restart
 - expand to 4x4
 - get shuffle/starting placement to work
 - get move count to work
-- get restart/shuffle button working
+- get restart/shuffle button working - in progress
+- // event listener built and working
 - build check win
 - build save best move count
 - get hover effect on piece - Done

@@ -34,8 +34,10 @@ function moveCounter(){
 }
 
 //start/restart/shuffle button visibility and what it does
-function shuffleBoard() {
-
+function shuffleBoard(evt) {
+    //make sure this does nothing it's not the shuffle button
+    if(evt.target.innerText !== 'Shuffle') { return }
+    console.log('this is what was clicked: \n', evt.target)
 }
 
 //randomizer - generates new random board state 
@@ -50,11 +52,10 @@ function genRandomBoard() {
 //is handling it by innertext or by class better?
 
 
-function checkForEmpty(colIdx, rowIdx) {
+function checkForEmpty(x, y) {
     //checking to the left
-    const checkLeft = 
-    //checking to the right
-    const checkRight = 
+    //checking one column to the left(-1, 0?)
+
 }
 
 function moveTile() {
@@ -78,7 +79,7 @@ function handleChoice(evt) {
 
 /*----- event listeners -----*/
 //shuffle board/start button
-
+document.querySelector('BUTTON').addEventListener('click', shuffleBoard)
 //piece selection -> tells the handleChoice selection which piece to move and where it moves
 document.querySelector('div').addEventListener('click', handleChoice)
 
