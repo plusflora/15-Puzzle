@@ -8,9 +8,6 @@ const winCon = []
 //move count
 let moveCount 
 
-//best move count
-let bestCount
-
 //completion -- I dunno if I need this.
 
 /*----- functions -----*/
@@ -51,19 +48,42 @@ function genRandomBoard() {
 //swaps the tiles if a spot that is orthognally connected is "empty" 
 //is handling it by innertext or by class better?
 
+function checkAdj(x, y) {
+    //
+    let count = 0
+    while (
 
-function checkForEmpty(x, y) {
-    //checking to the left
-    //checking one column to the left(-1, 0?)
-
+    )
 }
-
+//Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
 function moveTile() {
-    //so I need it to check orthognally connected tiles for "empty" 
-    //if no tiles are "empty" - return
-    //if a tile is empty - swap innertext and the classes "tile" and "empty"
-    //probably using a classList.remove('tile, empty') and classList.add('empty')
+    //so I need checkForEmpty to return a truthy value
+    //if a tile is empty - swap innertext to move the on the tile and the classes "tile" and "empty"
+    //probably using an if//else classList.remove('tile').classList.add('empty') and classList.add('empty').remove('tile')
+
 }
+
+function checkForEmptyHor(x, y) {
+    //checking to the left and right of clicked tile for an empty space (0, 0)
+    //checking one column to the left(-1, 0)?
+    const leftCheck = 
+    
+    //checking one column to the right(1, 0)?
+    
+    //if no tiles are 'empty' return
+    
+}
+
+function checkForEmptyVert(x, y) {
+    //checking for an empty space above and below clicked tile (0, 0)
+    //checking one row below (0, -1)
+
+    //checking one row above (0, 1)
+
+    //if no tiles are 'empty' return - is this even relevant? I've already checked to the right and left so one of these should return truthy
+
+}
+
 
 //handleChoice - checks to see if the piece is a valid option
 //checks to see if the piece can move - returns if it can't
@@ -76,6 +96,9 @@ function handleChoice(evt) {
 }
 
 //check win - checks to see if tile are in a "win" order
+function checkWin() {
+    //do i just give it an array here that checks to see if the tiles are in the correct order? 
+}
 
 /*----- event listeners -----*/
 //shuffle board/start button
