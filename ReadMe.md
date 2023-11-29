@@ -1,22 +1,25 @@
-#Project 1 
+# Project 1 
 
-##Idea - 15 Puzzle
+## Idea - 15 Puzzle
 
-##Overview
+## Overview
 
-##Wireframes / Screenshots
+## Wireframes / Screenshots
 Upon Page Load
 ![Page Load](assets/Page%20Load.png)
+
 Expected changes during gameplay
 ![During Game](assets/During%20Game.png)
 Upon Completion
+
 ![Upon Completion](assets/Upon%20Completion.png)
+
 After Game + Restart
 ![After Game](assets/After%20Game.png)
 
 
 
-##User Stories
+## User Stories
 - choose when to start
 - click on the square to move it
 - have a timer
