@@ -1,8 +1,14 @@
-console.log('js is linked') //smoke test
+// console.log('js is linked') //smoke test
 
 /*----- constants -----*/
-//win condition
-const winCon = []
+const winCon = [] //do I need this? or will i be checking some other way
+
+//tiles
+//
+const tiles = {
+    0: 'empty',
+    1: 'tile'
+}
 
 /*----- initial state variables -----*/
 //move count
@@ -10,20 +16,46 @@ let moveCount
 
 //completion -- I dunno if I need this.
 
+//board state
+let board 
+
+/*----- grab html elements -----*/
+const shuffleButton = document.querySelector('button')
+const cellEls = [...document.querySelectorAll('#cell')]
+console.log(cellEls)
+
 /*----- functions -----*/
 //init func
 function init() {
     //starting state on page load
-    
-    //sets moveCount to 0
-    
 
-    //
+    //builds board
+    board = [
+        [0, 0, 0]
+        [0, 0, 0]
+        [0, 0, 0]
+    ]
+    
+    //sets moveCount
+    moveCount = 0;
+    //call render function when built
+    render()
+}
+init()
+
+// board render/builder
+function renderBoard() {
+    board.forEach((colArr, colIdx) => {
+        console.log('colArr', colArr)
+        console.log('colIdx', colIdx)
+    })
 }
 
-//render
 
-//board render/builder
+//render
+function render() {
+    renderBoard()
+}
 
 //move count count++
 function moveCounter(){
@@ -35,7 +67,22 @@ function shuffleBoard(evt) {
     //make sure this does nothing it's not the shuffle button
     if(evt.target.innerText !== 'Shuffle') { return }
     console.log('this is what was clicked: \n', evt.target)
+    
 }
+
+//renderBoard - Makes the board
+// function renderBoard() {
+//     board.forEach((colArr,colIdx) => {
+//         //colArr is the column, colIdx is the id within the array
+//         console.log('colArr', colArr)
+//         console.log('colIdx', colIdx)
+//         colArr.forEach((cellVal, rowIdx) => {
+//             console.log('cellVal', cellVal)
+//             console.log('rowIdx', rowIdx)
+//             const cellId = `c${colIdx}r${rowIdx}`
+//         })
+//     })
+// }
 
 //randomizer - generates new random board state 
 //places the 15 pieces in the 4x4 grid in a randomized state
@@ -49,12 +96,22 @@ function genRandomBoard() {
 //is handling it by innertext or by class better?
 
 function checkAdj(x, y) {
-    //
-    let count = 0
-    while (
-
-    )
+    //checking to the left and right of clicked tile for an empty space (0, 0)
+    //checking one column to the left(-1, 0)?
+    
+    //checking one column to the right(1, 0)?
+    
+    //checking one row below (0, -1)
+    
+    //checking one row above (0, 1)
+    
+    //if no tiles are 'empty' return - is this even relevant? I've already checked to the right and left so one of these should return truthy
 }
+
+function checkForEmpty(x, y) {
+
+}
+
 //Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
 function moveTile() {
     //so I need checkForEmpty to return a truthy value
@@ -63,35 +120,13 @@ function moveTile() {
 
 }
 
-function checkForEmptyHor(x, y) {
-    //checking to the left and right of clicked tile for an empty space (0, 0)
-    //checking one column to the left(-1, 0)?
-    const leftCheck = 
-    
-    //checking one column to the right(1, 0)?
-    
-    //if no tiles are 'empty' return
-    
-}
-
-function checkForEmptyVert(x, y) {
-    //checking for an empty space above and below clicked tile (0, 0)
-    //checking one row below (0, -1)
-
-    //checking one row above (0, 1)
-
-    //if no tiles are 'empty' return - is this even relevant? I've already checked to the right and left so one of these should return truthy
-
-}
-
-
 //handleChoice - checks to see if the piece is a valid option
 //checks to see if the piece can move - returns if it can't
 function handleChoice(evt) {
     //if the option clicked is not a "tile" return. we do this by searching for the class empty
-    if(evt.target.classList.contains('empty')) { return }
-    console.log('this is what was clicked: \n', evt.target.className)
-
+    if(evt.target.classList.contains('tile')) {
+        console.log('this is what was clicked: \n', evt.target.className)
+    } else {return}
     //
 }
 
@@ -101,7 +136,7 @@ function checkWin() {
 }
 
 /*----- event listeners -----*/
-//shuffle board/start button
+//shuffle board button
 document.querySelector('BUTTON').addEventListener('click', shuffleBoard)
 //piece selection -> tells the handleChoice selection which piece to move and where it moves
 document.querySelector('div').addEventListener('click', handleChoice)
