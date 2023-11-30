@@ -22,7 +22,8 @@ let board
 /*----- grab html elements -----*/
 const shuffleButton = document.querySelector('button')
 const cellEls = [...document.querySelectorAll('#cell')]
-console.log(cellEls)
+const tileEls = [...document.querySelectorAll('.tile')]
+// console.log(cellEls)
 
 /*----- functions -----*/
 //init func
@@ -57,11 +58,11 @@ function renderBoard() {
             const cellId = document.getElementsByClassName(cellClass)
             // console.log('cellEl', cellId)
             
-            cellClass.classList.add('tiles')
+            // cellClass.classList.add(...tiles)
+            console.log(cellClass)
         })
     })
 }
-
 
 //render
 function render() {
@@ -91,15 +92,18 @@ function genRandomBoard() {
 //move tile
 //swaps the tiles if a spot that is orthognally connected is "empty" 
 //is handling it by innertext or by class better?
+function tileAppear() {
+    // if (innerText.isNaN() 
+}
 
 function checkForEmpty(x, y) {
     
 }
 
-function checkAdj(x, y) {
+function checkAdj() {
     //checking to the left and right of clicked tile for an empty space (0, 0)
     //checking one column to the left(-1, 0)?
-    return document.getElementsByClassName()
+    
     //checking one column to the right(1, 0)?
     
     //checking one row below (0, -1)
@@ -109,23 +113,48 @@ function checkAdj(x, y) {
     //if no tiles are 'empty' return 
 }
 
-//Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
-function moveTile() {
-    //so I need checkForEmpty to return a truthy value
-    //if a tile is empty - swap innertext to move the on the tile and the classes "tile" and "empty"
-    //probably using an if//else classList.remove('tile').classList.add('empty') and classList.add('empty').remove('tile')
-
-}
-
 //handleChoice - checks to see if the piece is a valid option
 //checks to see if the piece can move - returns if it can't
 function handleChoice(evt) {
     //if the option clicked is not a "tile" return. we do this by searching for the class empty
+    const colIdx = tileEls.indexOf(evt.target)
+    console.log('this is colIdx inside of handleChoice', colIdx)
+
+    const colArr = board[colIdx]
+    // console.log('this is colArr inside handleChoice', colArr)
+
     if(evt.target.classList.contains('tile')) {
-        console.log('this is what was clicked: \n', evt.target.className)
+        // console.log('this is what was clicked: \n', evt.target.className)
     } else {return}
-    //
+    //after every move, we want to check for win
+    //after every move, we want to render changes
 }
+
+// $('#cell').on('click', function(){
+//     var emptyOrder = parseInt($('.empty').css('order'));
+//     var currentOrder = parseInt($(this).css('order'));
+//    // swap order properties
+//     if (currentOrder + 1 === emptyOrder ||
+//         currentOrder -1 === emptyOrder ||
+//         currentOrder +3 === emptyOrder ||
+//         currentOrder -3 === emptyOrder){
+//     $(this).css('order', emptyOrder)
+//     $('#empty').css('order', currentOrder)
+//     }
+//     // checks for the winning condition
+//     checkWin();
+//   }); // end cell click
+
+
+
+//Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
+// function moveTile() {
+    //so I need checkForEmpty to return a truthy value
+    //if a tile is empty - swap innertext to move the on the tile and the classes "tile" and "empty"
+    //probably using an if//else classList.remove('tile').classList.add('empty') and classList.add('empty').remove('tile')
+
+// }
+
 
 //check win - checks to see if tile are in a "win" order
 function checkWin() {
@@ -137,5 +166,6 @@ function checkWin() {
 document.querySelector('BUTTON').addEventListener('click', shuffleBoard)
 //piece selection -> tells the handleChoice selection which piece to move and where it moves
 document.querySelector('div').addEventListener('click', handleChoice)
+
 
 /*----- what's the haps -----*/
