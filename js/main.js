@@ -6,8 +6,8 @@ const winCon = [] //do I need this? or will i be checking some other way
 //tiles
 //
 const tiles = {
-    0: 'empty',
-    1: 'tile'
+    0: '.empty',
+    1: '.tile'
 }
 
 /*----- initial state variables -----*/
@@ -52,10 +52,12 @@ function renderBoard() {
             // console.log('cellVal', cellVal)
             // console.log('rowIdx', rowIdx)
             const cellClass = `c${colIdx}r${rowIdx}`
-            console.log('cellClass', cellClass)
+            // console.log('cellClass', cellClass)
 
-            const cellEl = document.getElementsByClassName(cellClass)
-            console.log('cellEl', cellEl)
+            const cellId = document.getElementsByClassName(cellClass)
+            // console.log('cellEl', cellId)
+            
+            cellClass.classList.add('tiles')
         })
     })
 }
@@ -79,20 +81,6 @@ function shuffleBoard(evt) {
     
 }
 
-//renderBoard - Makes the board
-// function renderBoard() {
-//     board.forEach((colArr,colIdx) => {
-//         //colArr is the column, colIdx is the id within the array
-//         console.log('colArr', colArr)
-//         console.log('colIdx', colIdx)
-//         colArr.forEach((cellVal, rowIdx) => {
-//             console.log('cellVal', cellVal)
-//             console.log('rowIdx', rowIdx)
-//             const cellId = `c${colIdx}r${rowIdx}`
-//         })
-//     })
-// }
-
 //randomizer - generates new random board state 
 //places the 15 pieces in the 4x4 grid in a randomized state
 //math.random? 
@@ -104,21 +92,21 @@ function genRandomBoard() {
 //swaps the tiles if a spot that is orthognally connected is "empty" 
 //is handling it by innertext or by class better?
 
+function checkForEmpty(x, y) {
+    
+}
+
 function checkAdj(x, y) {
     //checking to the left and right of clicked tile for an empty space (0, 0)
     //checking one column to the left(-1, 0)?
-    
+    return document.getElementsByClassName()
     //checking one column to the right(1, 0)?
     
     //checking one row below (0, -1)
     
     //checking one row above (0, 1)
     
-    //if no tiles are 'empty' return - is this even relevant? I've already checked to the right and left so one of these should return truthy
-}
-
-function checkForEmpty(x, y) {
-
+    //if no tiles are 'empty' return 
 }
 
 //Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
