@@ -31,9 +31,9 @@ function init() {
 
     //builds board
     board = [
-        [0, 0, 0]
-        [0, 0, 0]
-        [0, 0, 0]
+        [0, 0, 0], //column 0
+        [0, 0, 0], //column 1
+        [0, 0, 0], //column 2
     ]
     
     //sets moveCount
@@ -46,8 +46,17 @@ init()
 // board render/builder
 function renderBoard() {
     board.forEach((colArr, colIdx) => {
-        console.log('colArr', colArr)
-        console.log('colIdx', colIdx)
+        // console.log('colArr', colArr)
+        // console.log('colIdx', colIdx)
+        colArr.forEach((cellVal, rowIdx) => {
+            // console.log('cellVal', cellVal)
+            // console.log('rowIdx', rowIdx)
+            const cellClass = `c${colIdx}r${rowIdx}`
+            console.log('cellClass', cellClass)
+
+            const cellEl = document.getElementsByClassName(cellClass)
+            console.log('cellEl', cellEl)
+        })
     })
 }
 
