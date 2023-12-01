@@ -90,16 +90,32 @@ function shuffleBoard(evt) {
 // this might be redundant
 //randomizer - generates an array that we can then shuffle for the pieces
 function numbers() {
-    var arr = [];
+    let arr = [];
     for (var i = 1; i <= 9; i++) {
        arr.push(i);
     }
     return arr;
+    
   }
+// console.log(numbers())
 
-console.log(numbers())
-//places the 15 pieces in the 4x4 grid in a randomized state
+//shuffles the numbers in the array, 
 //math.random? 
+//turns out there's a defacto array shuffler
+function shuffle(arr) {
+    let curIdx = arr.length, rdmIdx;
+    //while there are still numbers to shuffle - 
+    while (curIdx > 0 ) {
+        rdmIdx = Math.floor(Math.random() * curIdx);
+        curIdx--;
+        [arr[curIdx], arr[rdmIdx]] = [arr[rdmIdx], arr[curIdx]]
+    }
+    return arr;
+}
+// console.log(shuffle(numbers()))
+
+//places the pieces in the 3x3 grid in a randomized state
+
 function genRandomBoard() {
     //this gens pieces that give the id of tile so that they appear when a number (1-15) is in the space
 }
