@@ -16,6 +16,9 @@ let moveCount
 
 //completion -- I dunno if I need this.
 
+//empty tile
+
+
 //board state
 let board 
 
@@ -23,6 +26,8 @@ let board
 const shuffleButton = document.querySelector('button')
 const cellEls = [...document.querySelectorAll('#cell')]
 const tileEls = [...document.querySelectorAll('.tile')]
+const emptyTile = [...document.querySelectorAll('#cell.empty')]
+// console.log(emptyTile)
 // console.log(cellEls)
 
 /*----- functions -----*/
@@ -82,6 +87,7 @@ function shuffleBoard(evt) {
     
 }
 
+// this might be redundant
 //randomizer - generates new random board state 
 //places the 15 pieces in the 4x4 grid in a randomized state
 //math.random? 
@@ -96,9 +102,6 @@ function tileAppear() {
     // if (innerText.isNaN() 
 }
 
-function checkForEmpty(x, y) {
-    
-}
 
 function checkAdj() {
     //checking to the left and right of clicked tile for an empty space (0, 0)
@@ -117,34 +120,21 @@ function checkAdj() {
 //checks to see if the piece can move - returns if it can't
 function handleChoice(evt) {
     //if the option clicked is not a "tile" return. we do this by searching for the class empty
-    const colIdx = tileEls.indexOf(evt.target)
-    console.log('this is colIdx inside of handleChoice', colIdx)
-
-    const colArr = board[colIdx]
-    // console.log('this is colArr inside handleChoice', colArr)
-
+    // because I can get the idx of the target and not the array, I can check +1 and -1 for tiles to the right and +3 and -3 for tiles above and below. 
+    const colIdx = cellEls.indexOf(evt.target)
+    const emptyIdx = document.getElementsByClassName.contains('#empty')
+        console.log('this is colIdx inside of handleChoice', colIdx)
     if(evt.target.classList.contains('tile')) {
-        // console.log('this is what was clicked: \n', evt.target.className)
+        console.log('this is what was clicked: \n', evt.target.className)
+        //if the clicked tile contains the class of 'tile', it looks for a connected tile without the same class, 
     } else {return}
+    // if(colIdx + 1 === emptyIdx ||
+    //     colIdx - 1 === emptyIdx ||
+    //     colIdx + 3 === emptyIdx ||
+    //     colIdx - 3 === emptyIdx) {}
     //after every move, we want to check for win
     //after every move, we want to render changes
 }
-
-// $('#cell').on('click', function(){
-//     var emptyOrder = parseInt($('.empty').css('order'));
-//     var currentOrder = parseInt($(this).css('order'));
-//    // swap order properties
-//     if (currentOrder + 1 === emptyOrder ||
-//         currentOrder -1 === emptyOrder ||
-//         currentOrder +3 === emptyOrder ||
-//         currentOrder -3 === emptyOrder){
-//     $(this).css('order', emptyOrder)
-//     $('#empty').css('order', currentOrder)
-//     }
-//     // checks for the winning condition
-//     checkWin();
-//   }); // end cell click
-
 
 
 //Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
@@ -155,6 +145,11 @@ function handleChoice(evt) {
 
 // }
 
+//check empty - checks for an empty tile to the left, right, above and below
+// function checkForEmpty(evt) {
+//     if (evt.target.classList.contains('#tile')
+// }
+
 
 //check win - checks to see if tile are in a "win" order
 function checkWin() {
@@ -163,7 +158,7 @@ function checkWin() {
 
 /*----- event listeners -----*/
 //shuffle board button
-document.querySelector('BUTTON').addEventListener('click', shuffleBoard)
+document.getElementById('shuffle').addEventListener('click', shuffleBoard)
 //piece selection -> tells the handleChoice selection which piece to move and where it moves
 document.querySelector('div').addEventListener('click', handleChoice)
 
