@@ -18,18 +18,18 @@ let moveCount
 
 //empty tile
 
-
 //board state
 let board 
 
 /*----- grab html elements -----*/
 const shuffleButton = document.querySelector('button')
-const cellEls = [...document.querySelectorAll('#cell')]
+const cellEls = [...document.querySelectorAll('.cell')]
 const tileEls = [...document.querySelectorAll('.tile')]
-const emptyTile = [...document.querySelectorAll('#cell.empty')]
-// console.log(emptyTile)
-// console.log(cellEls)
+let emptyTile = [...document.querySelectorAll('.cell.empty')]
+console.log(cellEls)
 
+// let emptyTile = cellEls.classList.contains('.empty')
+// console.log(emptyTile)
 /*----- functions -----*/
 //init func
 function init() {
@@ -119,15 +119,24 @@ function checkAdj() {
 //handleChoice - checks to see if the piece is a valid option
 //checks to see if the piece can move - returns if it can't
 function handleChoice(evt) {
-    //if the option clicked is not a "tile" return. we do this by searching for the class empty
+    // console.log('this is evt.target within handleChoice', evt.target)
     // because I can get the idx of the target and not the array, I can check +1 and -1 for tiles to the right and +3 and -3 for tiles above and below. 
     const colIdx = cellEls.indexOf(evt.target)
-    const emptyIdx = cellEls.indexOf('#cell.empty')
-        console.log('this is emptyIdx inside of handleChoice', emptyIdx)
-        console.log('this is colIdx inside of handleChoice', colIdx)
+    console.log('this is colIdx inside of handleChoice', colIdx)
+
+    const colArr = board[colIdx]
+    console.log('this is colArr inside handleChoice', colArr)
+    // var emptyIdx = cellEls.indexOf('.empty')
+    // console.log('this is emptyIdx inside of handleChoice', emptyIdx)
+    //if the option clicked is not a "tile" return. we do this by searching for the class empty
     if(evt.target.classList.contains('tile')) {
         // console.log('this is what was clicked: \n', evt.target.className)
         //if the clicked tile contains the class of 'tile', it looks for a connected tile without the same class, 
+        //determine the column and row selected
+
+        //update the value of the board array
+        
+
     } else {return}
 
     //after every move, we want to check for win
@@ -158,7 +167,7 @@ function checkWin() {
 //shuffle board button
 document.getElementById('shuffle').addEventListener('click', shuffleBoard)
 //piece selection -> tells the handleChoice selection which piece to move and where it moves
-document.querySelector('div').addEventListener('click', handleChoice)
+document.getElementById('board').addEventListener('click', handleChoice)
 
 
 /*----- what's the haps -----*/
