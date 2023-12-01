@@ -88,7 +88,16 @@ function shuffleBoard(evt) {
 }
 
 // this might be redundant
-//randomizer - generates new random board state 
+//randomizer - generates an array that we can then shuffle for the pieces
+function numbers() {
+    var arr = [];
+    for (var i = 1; i <= 9; i++) {
+       arr.push(i);
+    }
+    return arr;
+  }
+
+console.log(numbers())
 //places the 15 pieces in the 4x4 grid in a randomized state
 //math.random? 
 function genRandomBoard() {
