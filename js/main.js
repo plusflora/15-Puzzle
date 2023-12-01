@@ -122,16 +122,14 @@ function handleChoice(evt) {
     //if the option clicked is not a "tile" return. we do this by searching for the class empty
     // because I can get the idx of the target and not the array, I can check +1 and -1 for tiles to the right and +3 and -3 for tiles above and below. 
     const colIdx = cellEls.indexOf(evt.target)
-    const emptyIdx = document.getElementsByClassName.contains('#empty')
+    const emptyIdx = cellEls.indexOf('#cell.empty')
+        console.log('this is emptyIdx inside of handleChoice', emptyIdx)
         console.log('this is colIdx inside of handleChoice', colIdx)
     if(evt.target.classList.contains('tile')) {
-        console.log('this is what was clicked: \n', evt.target.className)
+        // console.log('this is what was clicked: \n', evt.target.className)
         //if the clicked tile contains the class of 'tile', it looks for a connected tile without the same class, 
     } else {return}
-    // if(colIdx + 1 === emptyIdx ||
-    //     colIdx - 1 === emptyIdx ||
-    //     colIdx + 3 === emptyIdx ||
-    //     colIdx - 3 === emptyIdx) {}
+
     //after every move, we want to check for win
     //after every move, we want to render changes
 }
