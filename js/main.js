@@ -1,8 +1,9 @@
 // console.log('js is linked') //smoke test
 
 /*----- constants -----*/
-const winCon = [] //do I need this? or will i be checking some other way
+const winCon = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
+//
 //tiles
 //
 const tiles = {
@@ -36,71 +37,32 @@ function init() {
     //starting state on page load
 
     //builds board
-    board = [
-        [0, 0, 0], //column 0
-        [0, 0, 0], //column 1
-        [0, 0, 0], //column 2
-    ]
-    
+    // board = [
+    //     [0, 0, 0], //column 0
+    //     [0, 0, 0], //column 1
+    //     [0, 0, 0], //column 2
+    // ]
+    // board = [/*row 1*/ 0, 1, 2, /*row 2*/ 3, 4, 5, /*row 3*/ 6, 7, 8]
+    board = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
     //sets moveCount
-    moveCount = 0;
     //call render function when built
     render()
 }
 init()
 
-// board render/builder
-function renderBoard() {
-    board.forEach((colArr, colIdx) => {
-        // console.log('colArr', colArr)
-        // console.log('colIdx', colIdx)
-        colArr.forEach((cellVal, rowIdx) => {
-            // console.log('cellVal', cellVal)
-            // console.log('rowIdx', rowIdx)
-            const cellClass = `c${colIdx}r${rowIdx}`
-            // console.log('cellClass', cellClass)
-
-            const cellId = document.getElementsByClassName(cellClass)
-            // console.log('cellEl', cellId)
-            
-            // cellClass.classList.add(...tiles)
-            console.log(cellClass)
-        })
-    })
-}
-
-//render
-function render() {
-    renderBoard()
-}
-
-//move count count++
-function moveCounter(){
-    //something like count++? with a readout to a move count tracker
-}
-
-//start/restart/shuffle button visibility and what it does
-function shuffleBoard(evt) {
-    //make sure this does nothing it's not the shuffle button
-    if(evt.target.innerText !== 'Shuffle') { return }
-    console.log('this is what was clicked: \n', evt.target)
-    
-}
-
-// this might be redundant
 //randomizer - generates an array that we can then shuffle for the pieces
+// ------- REMEMBER TO UPDATE WHEN YOU EXPAND THE BOARD -----------------------------------------
 function numbers() {
     let arr = [];
-    for (var i = 1; i <= 9; i++) {
-       arr.push(i);
+    for (var i = 0; i <= 8; i++) {
+        arr.push(i);
     }
     return arr;
     
-  }
+}
 // console.log(numbers())
 
-//shuffles the numbers in the array, 
-//math.random? 
+//shuffles the numbers in the array, math.random()?
 //turns out there's a defacto array shuffler
 function shuffle(arr) {
     let curIdx = arr.length, rdmIdx;
@@ -114,10 +76,40 @@ function shuffle(arr) {
 }
 // console.log(shuffle(numbers()))
 
+//start/restart/shuffle button 
 //places the pieces in the 3x3 grid in a randomized state
+function shuffleBoard(evt) {
+    //make sure this does nothing it's not the shuffle button
+    if(evt.target.innerText !== 'Shuffle') { return }
+    // console.log('this is what was clicked: \n', evt.target)
+    mixedBoard = [...shuffle(numbers())]
+    console.log('this is the board array inside shuffleBoard', mixedBoard)
+}
 
-function genRandomBoard() {
-    //this gens pieces that give the id of tile so that they appear when a number (1-15) is in the space
+// querySelector class tile
+//
+
+
+// board render/builder
+function renderBoard(){
+    for (let row = 0; row < board.length; row++) {
+        for (let col = 0; col < board[row].length; col++) {
+            const index = row * board.length + col;
+            // console.log(index)
+            const cellEl = cellEls[index];
+            // console.log(cellEl)
+            const tileNum = board[row][col] + 1;
+            // console.log(tileNum)
+            cellEl.innerText = tileNum === 9 ? '' : tileNum;
+            cellEl.className = tileNum === 9 ? 'cell empty' : 'cell tile';
+        }
+    }
+}
+
+//render
+function render() {
+    renderBoard()
+    //do I need the shuffleBoard() in here? I feel like I don't.
 }
 
 //move tile
@@ -145,20 +137,17 @@ function checkAdj() {
 //checks to see if the piece can move - returns if it can't
 function handleChoice(evt) {
     // console.log('this is evt.target within handleChoice', evt.target)
-    // because I can get the idx of the target and not the array, I can check +1 and -1 for tiles to the right and +3 and -3 for tiles above and below. 
-    const colIdx = cellEls.indexOf(evt.target)
-    console.log('this is colIdx inside of handleChoice', colIdx)
-
-    const colArr = board[colIdx]
-    console.log('this is colArr inside handleChoice', colArr)
-    // var emptyIdx = cellEls.indexOf('.empty')
-    // console.log('this is emptyIdx inside of handleChoice', emptyIdx)
-    //if the option clicked is not a "tile" return. we do this by searching for the class empty
+    // because I can get the idx of the target and not the array, I can check +1 and -1 for tiles to the right and +3 and -3 for tiles above and below.
+    const targetTile = evt.target
+    // const colIdx = cellEls.indexOf(evt.target)
+    // console.log('this is colIdx inside of handleChoice', colIdx)
     if(evt.target.classList.contains('tile')) {
         // console.log('this is what was clicked: \n', evt.target.className)
         //if the clicked tile contains the class of 'tile', it looks for a connected tile without the same class, 
         //determine the column and row selected
-
+        const tgtRow = Math.floor(cellEls.indexOf(targetTile) / 3)
+        // console.log(tgtRow)
+        
         //update the value of the board array
         
 
