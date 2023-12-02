@@ -155,23 +155,28 @@ function handleChoice(evt) {
         const emptyCol = cellEls.indexOf(emptyTile[0]) % 3
         console.log('this is the empty column', emptyCol)
         //update the value of the board array
-        
+        if(checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol)) {
+            moveTile(tgtRow, tgtCol, emptyRow, emptyCol)
+        }
     } else {return}
 
     //after every move, we want to check for win
     //after every move, we want to render changes
 }
 
-
-
 //check empty - checks for an empty tile to the left, right, above and below
-function checkForEmpty(evt) {
-    
+// takes 4 args - the row and column of the clicked tile - and the row and column of the empty space
+function checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol) {
+    const emptyLoc = ((Math.abs(tgtRow - emptyRow) === 1 && tgtCol - emptyCol) || (Math.abs(tgtCol - emptyCol) === 1 && tgtRow === emptyRow))
+    return emptyLoc
 }
     
-//Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
-function moveTile() {
-
+//moves the tile to the empty spot
+//also takes 4 args - r + c of clicked tile - and the r + c of the empty space
+function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
+    [board[tgtRow][tgtCol], board[emptyRow][emptyCol]] = [board[emptyRow][emptyCol], board[tgtRow][tgtCol]]
+    //render changes
+    renderBoard()
 }
 
 //check win - checks to see if tile are in a "win" order
