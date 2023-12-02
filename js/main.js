@@ -146,11 +146,16 @@ function handleChoice(evt) {
         //if the clicked tile contains the class of 'tile', it looks for a connected tile without the same class, 
         //determine the column and row selected
         const tgtRow = Math.floor(cellEls.indexOf(targetTile) / 3)
-        // console.log(tgtRow)
-        
+        // console.log('this is the target row', tgtRow)
+        const tgtCol = cellEls.indexOf(targetTile) % 3
+        console.log('this is the target column', tgtCol)
+        //determine where the empty tile is
+        const emptyRow = Math.floor(cellEls.indexOf(emptyTile[0]) / 3)
+        // console.log('this is the empty row', emptyRow)
+        const emptyCol = cellEls.indexOf(emptyTile[0]) % 3
+        console.log('this is the empty column', emptyCol)
         //update the value of the board array
         
-
     } else {return}
 
     //after every move, we want to check for win
@@ -158,19 +163,16 @@ function handleChoice(evt) {
 }
 
 
-//Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
-// function moveTile() {
-    //so I need checkForEmpty to return a truthy value
-    //if a tile is empty - swap innertext to move the on the tile and the classes "tile" and "empty"
-    //probably using an if//else classList.remove('tile').classList.add('empty') and classList.add('empty').remove('tile')
-
-// }
 
 //check empty - checks for an empty tile to the left, right, above and below
-// function checkForEmpty(evt) {
-//     if (evt.target.classList.contains('#tile')
-// }
+function checkForEmpty(evt) {
+    
+}
+    
+//Do I want to do this in 2 functions? checking for 'tile' then returning if it doesn't have it?
+function moveTile() {
 
+}
 
 //check win - checks to see if tile are in a "win" order
 function checkWin() {
