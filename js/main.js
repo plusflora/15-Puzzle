@@ -106,9 +106,12 @@ function renderBoard(){
             // console.log(index)
             const cellEl = cellEls[index];
             // console.log(cellEl)
+            
             const tileNum = board[row][col] + 1;
             // console.log(tileNum)
+            //sets the innerText of the tile to 1-8 due to the array that I created above. If the tile has the number 9 - leave it empty - else give it an innertext to match it's number
             cellEl.innerText = tileNum === 9 ? '' : tileNum;
+            //if the tile has the number 9 - assign the empty class, else give it tile
             cellEl.className = tileNum === 9 ? 'empty' : 'tile';
         }
     }
@@ -118,13 +121,6 @@ function renderBoard(){
 function render() {
     renderBoard()
     //do I need the shuffleBoard() in here? I feel like I don't.
-}
-
-//move tile
-//swaps the tiles if a spot that is orthognally connected is "empty" 
-//is handling it by innertext or by class better?
-function tileAppear() {
-    // if (innerText.isNaN() 
 }
 
 //check empty - checks for an empty tile to the left, right, above and below
@@ -156,8 +152,10 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
 
     // Render changes
     renderBoard();
+    console.log('this is the current state of the board in moveTile', board)
+    //after every move, we want to check for win
+    checkWin()
     //check for win
-
 }
 
 //handleChoice - checks to see if the piece is a valid option
@@ -191,15 +189,20 @@ function handleChoice(evt) {
         }
     } else {return}
 
-    //after every move, we want to check for win
-    //after every move, we want to render changes
-    renderBoard()
 }
 
 
 //check win - checks to see if tile are in a "win" order
 function checkWin() {
     //do i just give it an array here that checks to see if the tiles are in the correct order? 
+    //I need it to read the current board array
+    //and compare it to the winCon array
+    //if they match, do something
+
+}
+
+function checkBoards(arr1, arr2) {
+
 }
 
 /*----- event listeners -----*/
