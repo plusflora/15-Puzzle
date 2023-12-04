@@ -101,7 +101,7 @@ function renderBoard(){
             const tileNum = board[row][col] + 1;
             // console.log(tileNum)
             cellEl.innerText = tileNum === 9 ? '' : tileNum;
-            cellEl.className = tileNum === 9 ? 'cell empty' : 'cell tile';
+            cellEl.className = tileNum === 9 ? 'empty' : 'tile';
         }
     }
 }
@@ -119,18 +119,35 @@ function tileAppear() {
     // if (innerText.isNaN() 
 }
 
+//check empty - checks for an empty tile to the left, right, above and below
+// takes 4 args - the row and column of the clicked tile - and the row and column of the empty space
+function checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol) {
+    const isEmptyAdjacent = (
+        (Math.abs(tgtRow - emptyRow) === 1 && tgtCol === emptyCol) ||
+        (Math.abs(tgtCol - emptyCol) === 1 && tgtRow === emptyRow)
+    );
 
-function checkAdj() {
-    //checking to the left and right of clicked tile for an empty space (0, 0)
-    //checking one column to the left(-1, 0)?
+    return isEmptyAdjacent;
+}
     
-    //checking one column to the right(1, 0)?
-    
-    //checking one row below (0, -1)
-    
-    //checking one row above (0, 1)
-    
-    //if no tiles are 'empty' return 
+//moves the tile to the empty spot
+//also takes 4 args - r + c of clicked tile - and the r + c of the empty space
+function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
+    // Swap positions in the board array
+    [board[tgtRow][tgtCol], board[emptyRow][emptyCol]] = [board[emptyRow][emptyCol], board[tgtRow][tgtCol]];
+
+    // Swap class names in the HTML elements
+    const tgtIndex = tgtRow * 3 + tgtCol;
+    const emptyIndex = emptyRow * 3 + emptyCol;
+
+    const tgtCell = cellEls[tgtIndex];
+    const emptyCell = cellEls[emptyIndex];
+
+    // Swap the class names
+    [tgtCell.className, emptyCell.className] = [emptyCell.className, tgtCell.className];
+
+    // Render changes
+    renderBoard();
 }
 
 //handleChoice - checks to see if the piece is a valid option
@@ -148,36 +165,27 @@ function handleChoice(evt) {
         const tgtRow = Math.floor(cellEls.indexOf(targetTile) / 3)
         // console.log('this is the target row', tgtRow)
         const tgtCol = cellEls.indexOf(targetTile) % 3
-        console.log('this is the target column', tgtCol)
+        // console.log('this is the target column', tgtCol)
+        emptyTile = [cellEls.find(cell => cell.classList.contains('empty'))]
         //determine where the empty tile is
         const emptyRow = Math.floor(cellEls.indexOf(emptyTile[0]) / 3)
         // console.log('this is the empty row', emptyRow)
         const emptyCol = cellEls.indexOf(emptyTile[0]) % 3
-        console.log('this is the empty column', emptyCol)
+        // console.log('this is the empty column', emptyCol)
+        
         //update the value of the board array
         if(checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol)) {
             moveTile(tgtRow, tgtCol, emptyRow, emptyCol)
+
+            renderBoard()
         }
     } else {return}
 
     //after every move, we want to check for win
     //after every move, we want to render changes
-}
-
-//check empty - checks for an empty tile to the left, right, above and below
-// takes 4 args - the row and column of the clicked tile - and the row and column of the empty space
-function checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol) {
-    const emptyLoc = ((Math.abs(tgtRow - emptyRow) === 1 && tgtCol - emptyCol) || (Math.abs(tgtCol - emptyCol) === 1 && tgtRow === emptyRow))
-    return emptyLoc
-}
-    
-//moves the tile to the empty spot
-//also takes 4 args - r + c of clicked tile - and the r + c of the empty space
-function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
-    [board[tgtRow][tgtCol], board[emptyRow][emptyCol]] = [board[emptyRow][emptyCol], board[tgtRow][tgtCol]]
-    //render changes
     renderBoard()
 }
+
 
 //check win - checks to see if tile are in a "win" order
 function checkWin() {
