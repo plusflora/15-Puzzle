@@ -1,7 +1,7 @@
 // console.log('js is linked') //smoke test
 
 /*----- constants -----*/
-const winCon = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+// const winCon = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
 //
 //tiles
@@ -196,9 +196,20 @@ function handleChoice(evt) {
 function checkWin() {
     //do i just give it an array here that checks to see if the tiles are in the correct order? 
     //I need it to read the current board array
+    let curBoardState = board
+    // console.log('this is the current board state in checkWin', curBoardState)
+    const winCon = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    // console.log('this is winCon inside of checkWin', winCon)
     //and compare it to the winCon array
     //if they match, do something
-
+    function checks(curBoardState, winCon) {
+        return curBoardState.join() == winCon.join()
+    }
+    // console.log(checks(curBoardState, winCon))
+    if(checks(curBoardState, winCon) === true){
+        
+        console.log('congrats')
+    }
 }
 
 function checkBoards(arr1, arr2) {
