@@ -82,8 +82,16 @@ function shuffleBoard(evt) {
     //make sure this does nothing it's not the shuffle button
     if(evt.target.innerText !== 'Shuffle') { return }
     // console.log('this is what was clicked: \n', evt.target)
-    mixedBoard = [...shuffle(numbers())]
+    const mixedBoard = [...shuffle(numbers())]
     console.log('this is the board array inside shuffleBoard', mixedBoard)
+    //assign the shuffled array to the board state
+    board = [
+        [mixedBoard[0], mixedBoard[1], mixedBoard[2]],
+        [mixedBoard[3], mixedBoard[4], mixedBoard[5]],
+        [mixedBoard[6], mixedBoard[7], mixedBoard[8]],
+    ];
+    //render changes
+    renderBoard()
 }
 
 // querySelector class tile
@@ -133,7 +141,7 @@ function checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol) {
 //moves the tile to the empty spot
 //also takes 4 args - r + c of clicked tile - and the r + c of the empty space
 function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
-    // Swap positions in the board array
+    // Swap the tiles in the array
     [board[tgtRow][tgtCol], board[emptyRow][emptyCol]] = [board[emptyRow][emptyCol], board[tgtRow][tgtCol]];
 
     // Swap class names in the HTML elements
@@ -148,6 +156,8 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
 
     // Render changes
     renderBoard();
+    //check for win
+
 }
 
 //handleChoice - checks to see if the piece is a valid option
