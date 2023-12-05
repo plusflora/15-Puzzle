@@ -1,14 +1,4 @@
-// console.log('js is linked') //smoke test
-
-/*----- constants -----*/
-// const winCon = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
-
 /*----- initial state variables -----*/
-//move count
-let moveCount 
-
-//completion -- I dunno if I need this.
-
 //board state
 let board 
 
@@ -18,25 +8,21 @@ const cellEls = [...document.querySelectorAll('.cell')]
 const tileEls = [...document.querySelectorAll('.tile')]
 let emptyTile = [...document.querySelectorAll('.cell.empty')]
 // console.log(cellEls)
-
-
-// let emptyTile = cellEls.classList.contains('.empty')
 // console.log(emptyTile)
+
 /*----- functions -----*/
 //init func
 function init() {
     //starting state on page load
     //builds board
     board = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
-    //sets moveCount
     //call render function when built
     render()
-    console.log('Please close your console. Pay no attention to the error behind the curtain.')
 }
 init()
 
 //randomizer - generates an array that we can then shuffle for the pieces
-// ------- REMEMBER TO UPDATE WHEN YOU EXPAND THE BOARD -----------------------------------------
+// ------- REMEMBER TO UPDATE IF YOU EXPAND THE BOARD -----------------------------------------
 function numbers() {
     let arr = [];
     for (var i = 0; i <= 8; i++) {
@@ -110,7 +96,6 @@ function checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol) {
         (Math.abs(tgtRow - emptyRow) === 1 && tgtCol === emptyCol) ||
         (Math.abs(tgtCol - emptyCol) === 1 && tgtRow === emptyRow)
     );
-
     return isEmptyAdjacent;
 }
     
@@ -121,15 +106,13 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
     [board[tgtRow][tgtCol], board[emptyRow][emptyCol]] = [board[emptyRow][emptyCol], board[tgtRow][tgtCol]];
 
     // Swap class names in the HTML elements
+    //sets the 2 tiles (targeted and empty)
     const tgtIndex = tgtRow * 3 + tgtCol;
     const emptyIndex = emptyRow * 3 + emptyCol;
-
     const tgtCell = cellEls[tgtIndex];
     const emptyCell = cellEls[emptyIndex];
-
     // Swap the class names
     [tgtCell.className, emptyCell.className] = [emptyCell.className, tgtCell.className];
-
     // Render changes
     renderBoard();
     // console.log('this is the current state of the board in moveTile', board)
@@ -141,13 +124,12 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
 //checks to see if the piece can move - returns if it can't
 function handleChoice(evt) {
     // console.log('this is evt.target within handleChoice', evt.target)
-    // because I can get the idx of the target and not the array, I can check +1 and -1 for tiles to the right and +3 and -3 for tiles above and below.
     const targetTile = evt.target
     // const colIdx = cellEls.indexOf(evt.target)
     // console.log('this is colIdx inside of handleChoice', colIdx)
     if(evt.target.classList.contains('tile')) {
         // console.log('this is what was clicked: \n', evt.target.className)
-        //if the clicked tile contains the class of 'tile', it looks for a connected tile without the same class, 
+        //if the clicked tile contains the class of 'tile', it looks for a connected tile with the class of empty, 
         //determine the column and row selected
         const tgtRow = Math.floor(cellEls.indexOf(targetTile) / 3)
         // console.log('this is the target row', tgtRow)
@@ -159,17 +141,12 @@ function handleChoice(evt) {
         // console.log('this is the empty row', emptyRow)
         const emptyCol = cellEls.indexOf(emptyTile[0]) % 3
         // console.log('this is the empty column', emptyCol)
-        
         //update the value of the board array
         if(checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol)) {
             moveTile(tgtRow, tgtCol, emptyRow, emptyCol)
-
-            renderBoard()
         }
     } else {return}
-
 }
-
 
 //check win - checks to see if tile are in a "win" order
 function checkWin() {
@@ -190,9 +167,6 @@ function checkWin() {
         cellEls.forEach((cell) => {
             cell.classList.add('win')
         })
-        //DO NOT COMMENT OUT. EVERYTHING BREAKS
-        console.log(tile)
-        //DO NOT COMMENT OUT. EVERYTHING BREAKS
     }
 }
 
@@ -202,5 +176,4 @@ document.getElementById('shuffle').addEventListener('click', shuffleBoard)
 //piece selection -> tells the handleChoice selection which piece to move and where it moves
 document.getElementById('board').addEventListener('click', handleChoice)
 
-
-/*----- what's the haps -----*/
+/*----- what's the haps? -----*/
