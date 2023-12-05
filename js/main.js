@@ -31,6 +31,7 @@ function init() {
     //sets moveCount
     //call render function when built
     render()
+    console.log('Please close your console. Pay no attention to the error behind the curtain.')
 }
 init()
 
@@ -67,7 +68,7 @@ function shuffleBoard(evt) {
     if(evt.target.innerText !== 'Shuffle') { return }
     // console.log('this is what was clicked: \n', evt.target)
     const mixedBoard = [...shuffle(numbers())]
-    console.log('this is the board array inside shuffleBoard', mixedBoard)
+    // console.log('this is the board array inside shuffleBoard', mixedBoard)
     //assign the shuffled array to the board state
     board = [
         [mixedBoard[0], mixedBoard[1], mixedBoard[2]],
@@ -132,7 +133,6 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
     // Render changes
     renderBoard();
     // console.log('this is the current state of the board in moveTile', board)
-    //after every move, we want to check for win
     //check for win
     checkWin()
 }
@@ -186,12 +186,13 @@ function checkWin() {
     }
     // console.log(checks(curBoardState, winCon))
     if(check(curBoardState, winCon) === true){
-        console.log('confirming the curBoardState and winCon match inside checkWin')
+        // console.log('confirming the curBoardState and winCon match inside checkWin')
         cellEls.forEach((cell) => {
             cell.classList.add('win')
         })
-        // console.log(tileEls)
+        //DO NOT COMMENT OUT. EVERYTHING BREAKS
         console.log(tile)
+        //DO NOT COMMENT OUT. EVERYTHING BREAKS
     }
 }
 
