@@ -24,9 +24,8 @@ body {
 }
 
 #board {
-    width: calc(30vh * 3);
-    height: calc(30vh * 3);
-    /* background-color: lightcoral; */
+    width: calc(auto * 3);
+    height: calc(auto * 3);
     display: grid;
     gap: 1vmin;
     grid-template-columns: repeat(3, auto);
@@ -35,30 +34,34 @@ body {
 
 /* tile styling */
 #cell {
-    /* background-color: lightskyblue; */
     color: black;
+    width: 100px;
+    height: auto;
     border-radius: 1vh;
-    /* border: 1px solid red; */
     position: relative;
     display: inline-block;
+
 }
 
 .tile {
     background-color: lightskyblue;
+    width: 25vh;
+    height: 25vh;
     border: 1px solid black;
     color: black;
     text-align: center;
     align-content: center;
     justify-content: center;
     border-radius: 1vh;
-    padding: 13vh;
-    font-size: 20px;
+    padding: 4vmin;
+    font-size: 15vmin;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .tile:hover{
     background-color: aquamarine;
     border: 1px solid black;
-    
+    cursor: pointer;
 }
 
 
@@ -78,15 +81,17 @@ body {
 /* start/restart/shuffle button styling */
 button {
     justify-self: center;
-    width: 10vmin;
+    width: 15vmin;
     height: 7vmin;
     border: 2px solid black;
     border-radius: 2vmin;
-    font-size: 2vmin;
+    font-size: 3vmin;
+    font-weight: bold;
 }
 
 button:hover{
     border: 2px solid red;
     background-color: black;
     color: white;
+    cursor: pointer;
 }
