@@ -3,21 +3,11 @@
 /*----- constants -----*/
 // const winCon = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
-//
-//tiles
-//
-const tiles = {
-    0: '.empty',
-    1: '.tile'
-}
-
 /*----- initial state variables -----*/
 //move count
 let moveCount 
 
 //completion -- I dunno if I need this.
-
-//empty tile
 
 //board state
 let board 
@@ -27,7 +17,11 @@ const shuffleButton = document.querySelector('button')
 const cellEls = [...document.querySelectorAll('.cell')]
 const tileEls = [...document.querySelectorAll('.tile')]
 let emptyTile = [...document.querySelectorAll('.cell.empty')]
-console.log(cellEls)
+// console.log(cellEls)
+const tileStyles={
+    color: "green"
+
+}
 
 // let emptyTile = cellEls.classList.contains('.empty')
 // console.log(emptyTile)
@@ -37,12 +31,6 @@ function init() {
     //starting state on page load
 
     //builds board
-    // board = [
-    //     [0, 0, 0], //column 0
-    //     [0, 0, 0], //column 1
-    //     [0, 0, 0], //column 2
-    // ]
-    // board = [/*row 1*/ 0, 1, 2, /*row 2*/ 3, 4, 5, /*row 3*/ 6, 7, 8]
     board = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
     //sets moveCount
     //call render function when built
@@ -93,10 +81,6 @@ function shuffleBoard(evt) {
     //render changes
     renderBoard()
 }
-
-// querySelector class tile
-//
-
 
 // board render/builder
 function renderBoard(){
@@ -154,8 +138,8 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
     renderBoard();
     console.log('this is the current state of the board in moveTile', board)
     //after every move, we want to check for win
-    checkWin()
     //check for win
+    checkWin()
 }
 
 //handleChoice - checks to see if the piece is a valid option
@@ -202,18 +186,16 @@ function checkWin() {
     // console.log('this is winCon inside of checkWin', winCon)
     //and compare it to the winCon array
     //if they match, do something
-    function checks(curBoardState, winCon) {
+    function check(curBoardState, winCon) {
         return curBoardState.join() == winCon.join()
     }
     // console.log(checks(curBoardState, winCon))
-    if(checks(curBoardState, winCon) === true){
-        
-        console.log('congrats')
+    if(check(curBoardState, winCon) === true){
+        console.log('confirming the curBoardState and winCon match inside checkWin')
+        cellEls.forEach((cell) => {
+            cell.classList.add('win')
+        })
     }
-}
-
-function checkBoards(arr1, arr2) {
-
 }
 
 /*----- event listeners -----*/
