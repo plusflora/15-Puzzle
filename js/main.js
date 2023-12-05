@@ -26,7 +26,6 @@ let emptyTile = [...document.querySelectorAll('.cell.empty')]
 //init func
 function init() {
     //starting state on page load
-
     //builds board
     board = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
     //sets moveCount
@@ -87,7 +86,6 @@ function renderBoard(){
             // console.log(index)
             const cellEl = cellEls[index];
             // console.log(cellEl)
-            
             const tileNum = board[row][col] + 1;
             // console.log(tileNum)
             //sets the innerText of the tile to 1-8 due to the array that I created above. If the tile has the number 9 - leave it empty - else give it an innertext to match it's number
@@ -133,7 +131,7 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
 
     // Render changes
     renderBoard();
-    console.log('this is the current state of the board in moveTile', board)
+    // console.log('this is the current state of the board in moveTile', board)
     //after every move, we want to check for win
     //check for win
     checkWin()
@@ -189,9 +187,11 @@ function checkWin() {
     // console.log(checks(curBoardState, winCon))
     if(check(curBoardState, winCon) === true){
         console.log('confirming the curBoardState and winCon match inside checkWin')
-        tileEls.forEach((tile) => {
-            tile.classList.add('win')
+        cellEls.forEach((cell) => {
+            cell.classList.add('win')
         })
+        // console.log(tileEls)
+        console.log(tile)
     }
 }
 
