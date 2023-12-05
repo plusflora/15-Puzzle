@@ -18,10 +18,7 @@ const cellEls = [...document.querySelectorAll('.cell')]
 const tileEls = [...document.querySelectorAll('.tile')]
 let emptyTile = [...document.querySelectorAll('.cell.empty')]
 // console.log(cellEls)
-const tileStyles={
-    color: "green"
 
-}
 
 // let emptyTile = cellEls.classList.contains('.empty')
 // console.log(emptyTile)
@@ -192,8 +189,8 @@ function checkWin() {
     // console.log(checks(curBoardState, winCon))
     if(check(curBoardState, winCon) === true){
         console.log('confirming the curBoardState and winCon match inside checkWin')
-        cellEls.forEach((cell) => {
-            cell.classList.add('win')
+        tileEls.forEach((tile) => {
+            tile.classList.add('win')
         })
     }
 }
