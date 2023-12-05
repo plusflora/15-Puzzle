@@ -61,6 +61,10 @@ body {
     
 }
 
+
+.win {
+    background-color: green;
+}
 .empty {
     border: none;
     background-color: lightgrey;
@@ -69,10 +73,6 @@ body {
 .empty:hover{
     border: none;
     background-color: lightgray;
-}
-
-.win {
-    background-color: green;
 }
 
 /* start/restart/shuffle button styling */
@@ -89,5 +89,4 @@ button:hover{
     border: 2px solid red;
     background-color: black;
     color: white;
-    margin-bottom: ;
 }
