@@ -30,7 +30,7 @@ body {
     display: grid;
     gap: 1vmin;
     grid-template-columns: repeat(3, auto);
-
+    margin-top: 1vh;
 }
 
 /* tile styling */
@@ -44,12 +44,15 @@ body {
 }
 
 .tile {
-    background-color: lightgreen;
-    border: 1px solid red;
+    background-color: lightskyblue;
+    border: 1px solid black;
     color: black;
     text-align: center;
     align-content: center;
     justify-content: center;
+    border-radius: 1vh;
+    padding: 13vh;
+    font-size: 20px;
 }
 
 .tile:hover{
@@ -60,9 +63,17 @@ body {
 
 .empty {
     border: none;
+    background-color: lightgrey;
 }
 
-/* scoreboard styling */
+.empty:hover{
+    border: none;
+    background-color: lightgray;
+}
+
+.win {
+    background-color: green;
+}
 
 /* start/restart/shuffle button styling */
 button {
@@ -78,4 +89,5 @@ button:hover{
     border: 2px solid red;
     background-color: black;
     color: white;
+    margin-bottom: ;
 }
