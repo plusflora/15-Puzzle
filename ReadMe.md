@@ -22,9 +22,8 @@ After Game + Restart
 - choose when to start
 - click on the square to move it
 - count number of moves
-- play again button
+- play again / shuffle button
 - hover effect to identify which piece I'm about to move
-- Bonus: audio chime upon completion (extra: different sound for new lowest amount of moves)
 - Bonus: click to move 2/3 squares (entire column/row moves)
 - Bonus: Visual Movement instead of instant swaps
 - Bonus: dark mode / light mode
@@ -39,10 +38,10 @@ After Game + Restart
 - build piece movement - Done 
 - get shuffle/starting placement to work - Done
 - get restart/shuffle button working - Done
-- expand to 4x4
+- expand to 4x4 - Done
 - get move count to work
 - // event listener (Done, console logged out - seems to be more correct that the piece movement event listener)
-- build check win (Do I give an array to match my divs to?)
-- get hover effect on piece - Done (kinda, basic level is complete - will fine tune deets later)
+- build check win (Do I give an array to match my divs to?) - Done
+- get hover effect on piece - Done 
 - any bonuses listed in User Stories I can get in time for turn in.
 
