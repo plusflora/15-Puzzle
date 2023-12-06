@@ -44,7 +44,7 @@ body {
 }
 
 .tile {
-    background-color: lightskyblue;
+    background-color: #94C5CC;
     width: 25vh;
     height: 25vh;
     border: 1px solid black;
@@ -59,13 +59,13 @@ body {
 }
 
 .tile:hover{
-    background-color: aquamarine;
+    background-color: #A1A6B4;
     border: 1px solid black;
     cursor: pointer;
 }
 
 .win {
-    background-color: green;
+    background-color: #B5EF8A;
 }
 .empty {
     border: none;
@@ -89,7 +89,7 @@ button {
 }
 
 button:hover{
-    border: 2px solid red;
+    border: 2px solid #6B0F1A;
     background-color: black;
     color: white;
     cursor: pointer;
