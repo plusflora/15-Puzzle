@@ -40,7 +40,6 @@ body {
     border-radius: 1vh;
     position: relative;
     display: inline-block;
-
 }
 
 .tile {
@@ -93,4 +92,25 @@ button:hover{
     background-color: black;
     color: white;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 450px) {
+
+    .tile {
+        background-color: #94C5CC;
+        width: 10vh;
+        height: 10vh;
+        border: 1px solid black;
+        color: black;
+        text-align: center;
+        align-content: center;
+        justify-content: center;
+        border-radius: 1vh;
+        padding: 3.5vmin;
+        font-size: 10vmin;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .win {
+        background-color: #B5EF8A;
+    }
 }
