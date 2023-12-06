@@ -15,7 +15,7 @@ let emptyTile = [...document.querySelectorAll('.cell.empty')]
 function init() {
     //starting state on page load
     //builds board
-    board = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    board = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]
     //call render function when built
     render()
 }
@@ -25,7 +25,7 @@ init()
 // ------- REMEMBER TO UPDATE IF YOU EXPAND THE BOARD -----------------------------------------
 function numbers() {
     let arr = [];
-    for (var i = 0; i <= 8; i++) {
+    for (var i = 0; i <= 15; i++) {
         arr.push(i);
     }
     return arr;
@@ -56,9 +56,10 @@ function shuffleBoard(evt) {
     // console.log('this is the board array inside shuffleBoard', mixedBoard)
     //assign the shuffled array to the board state
     board = [
-        [mixedBoard[0], mixedBoard[1], mixedBoard[2]],
-        [mixedBoard[3], mixedBoard[4], mixedBoard[5]],
-        [mixedBoard[6], mixedBoard[7], mixedBoard[8]],
+        [mixedBoard[0], mixedBoard[1], mixedBoard[2], mixedBoard[3]],
+        [mixedBoard[4], mixedBoard[5], mixedBoard[6], mixedBoard[7]],
+        [mixedBoard[8], mixedBoard[9], mixedBoard[10], mixedBoard[11]],
+        [mixedBoard[12], mixedBoard[13], mixedBoard[14], mixedBoard[15]],
     ];
     //render changes
     renderBoard()
@@ -75,9 +76,9 @@ function renderBoard(){
             const tileNum = board[row][col] + 1;
             // console.log(tileNum)
             //sets the innerText of the tile to 1-8 due to the array that I created above. If the tile has the number 9 - leave it empty - else give it an innertext to match it's number
-            cellEl.innerText = tileNum === 9 ? '' : tileNum;
+            cellEl.innerText = tileNum === 16 ? '' : tileNum;
             //if the tile has the number 9 - assign the empty class, else give it tile
-            cellEl.className = tileNum === 9 ? 'empty' : 'tile';
+            cellEl.className = tileNum === 16 ? 'empty' : 'tile';
         }
     }
 }
@@ -106,8 +107,8 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
 
     // Swap class names in the HTML elements
     //sets the 2 tiles (targeted and empty)
-    const tgtIndex = tgtRow * 3 + tgtCol;
-    const emptyIndex = emptyRow * 3 + emptyCol;
+    const tgtIndex = tgtRow * 4 + tgtCol;
+    const emptyIndex = emptyRow * 4 + emptyCol;
     const tgtCell = cellEls[tgtIndex];
     const emptyCell = cellEls[emptyIndex];
     // Swap the class names
@@ -130,15 +131,15 @@ function handleChoice(evt) {
         // console.log('this is what was clicked: \n', evt.target.className)
         //if the clicked tile contains the class of 'tile', it looks for a connected tile with the class of empty, 
         //determine the column and row selected
-        const tgtRow = Math.floor(cellEls.indexOf(targetTile) / 3)
+        const tgtRow = Math.floor(cellEls.indexOf(targetTile) / 4)
         // console.log('this is the target row', tgtRow)
-        const tgtCol = cellEls.indexOf(targetTile) % 3
+        const tgtCol = cellEls.indexOf(targetTile) % 4
         // console.log('this is the target column', tgtCol)
         emptyTile = [cellEls.find(cell => cell.classList.contains('empty'))]
         //determine where the empty tile is
-        const emptyRow = Math.floor(cellEls.indexOf(emptyTile[0]) / 3)
+        const emptyRow = Math.floor(cellEls.indexOf(emptyTile[0]) / 4)
         // console.log('this is the empty row', emptyRow)
-        const emptyCol = cellEls.indexOf(emptyTile[0]) % 3
+        const emptyCol = cellEls.indexOf(emptyTile[0]) % 4
         // console.log('this is the empty column', emptyCol)
         //update the value of the board array
         if(checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol)) {
@@ -153,7 +154,7 @@ function checkWin() {
     //I need it to read the current board array
     let curBoardState = board
     // console.log('this is the current board state in checkWin', curBoardState)
-    const winCon = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
+    const winCon = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]
     // console.log('this is winCon inside of checkWin', winCon)
     //and compare it to the winCon array
     //if they match, do something
