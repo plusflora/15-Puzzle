@@ -29,7 +29,6 @@ function numbers() {
         arr.push(i);
     }
     return arr;
-    
 }
 // console.log(numbers())
 
