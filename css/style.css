@@ -95,7 +95,9 @@ button:hover{
 }
 
 @media only screen and (max-width: 450px) {
-
+    body{
+        display: flex;
+    }
     .tile {
         background-color: #94C5CC;
         width: 10vh;
