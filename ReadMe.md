@@ -15,6 +15,11 @@ During Gameplay
 Upon Completion
 ![Upon Completion](assets/puzzle3.PNG)
 
+## Technologies Used
+- HTML
+- JavaScript
+- CSS
+
 
 ## User Stories
 - choose when to start
