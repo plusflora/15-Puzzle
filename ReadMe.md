@@ -9,7 +9,7 @@ A fifteen puzzle is a simple puzzle game. The goal is to get the numbered tiles 
 Upon Page Load
 ![Page Load](assets/puzzle1.PNG)
 
-Expected changes during gameplay
+During Gameplay
 ![During Game](assets/project%202.PNG)
 
 Upon Completion
