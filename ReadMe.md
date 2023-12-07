@@ -44,4 +44,3 @@ After Game + Restart
 - build check win (Do I give an array to match my divs to?) - Done
 - get hover effect on piece - Done 
 - any bonuses listed in User Stories I can get in time for turn in.
-
