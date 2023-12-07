@@ -7,8 +7,6 @@ const shuffleButton = document.querySelector('button')
 const cellEls = [...document.querySelectorAll('.cell')]
 const tileEls = [...document.querySelectorAll('.tile')]
 let emptyTile = [...document.querySelectorAll('.cell.empty')]
-// console.log(cellEls)
-// console.log(emptyTile)
 
 /*----- functions -----*/
 //init func
@@ -30,7 +28,6 @@ function numbers() {
     }
     return arr;
 }
-// console.log(numbers())
 
 //shuffles the numbers in the array, math.random()?
 //turns out there's a defacto array shuffler
@@ -44,16 +41,13 @@ function shuffle(arr) {
     }
     return arr;
 }
-// console.log(shuffle(numbers()))
 
 //start/restart/shuffle button 
 //places the pieces in the 3x3 grid in a randomized state
 function shuffleBoard(evt) {
     //make sure this does nothing it's not the shuffle button
     if(evt.target.innerText !== 'Shuffle') { return }
-    // console.log('this is what was clicked: \n', evt.target)
     const mixedBoard = [...shuffle(numbers())]
-    // console.log('this is the board array inside shuffleBoard', mixedBoard)
     //assign the shuffled array to the board state
     board = [
         [mixedBoard[0], mixedBoard[1], mixedBoard[2], mixedBoard[3]],
@@ -70,11 +64,8 @@ function renderBoard(){
     for (let row = 0; row < board.length; row++) {
         for (let col = 0; col < board[row].length; col++) {
             const index = row * board.length + col;
-            // console.log(index)
             const cellEl = cellEls[index];
-            // console.log(cellEl)
             const tileNum = board[row][col] + 1;
-            // console.log(tileNum)
             //sets the innerText of the tile to 1-8 due to the array that I created above. If the tile has the number 9 - leave it empty - else give it an innertext to match it's number
             cellEl.innerText = tileNum === 16 ? '' : tileNum;
             //if the tile has the number 9 - assign the empty class, else give it tile
@@ -86,7 +77,6 @@ function renderBoard(){
 //render
 function render() {
     renderBoard()
-    //do I need the shuffleBoard() in here? I feel like I don't.
 }
 
 //check empty - checks for an empty tile to the left, right, above and below
@@ -115,7 +105,6 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
     [tgtCell.className, emptyCell.className] = [emptyCell.className, tgtCell.className];
     // Render changes
     renderBoard();
-    // console.log('this is the current state of the board in moveTile', board)
     //check for win
     checkWin()
 }
@@ -123,24 +112,16 @@ function moveTile(tgtRow, tgtCol, emptyRow, emptyCol) {
 //handleChoice - checks to see if the piece is a valid option
 //checks to see if the piece can move - returns if it can't
 function handleChoice(evt) {
-    // console.log('this is evt.target within handleChoice', evt.target)
     const targetTile = evt.target
-    // const colIdx = cellEls.indexOf(evt.target)
-    // console.log('this is colIdx inside of handleChoice', colIdx)
     if(evt.target.classList.contains('tile')) {
-        // console.log('this is what was clicked: \n', evt.target.className)
         //if the clicked tile contains the class of 'tile', it looks for a connected tile with the class of empty, 
         //determine the column and row selected
         const tgtRow = Math.floor(cellEls.indexOf(targetTile) / 4)
-        // console.log('this is the target row', tgtRow)
         const tgtCol = cellEls.indexOf(targetTile) % 4
-        // console.log('this is the target column', tgtCol)
         emptyTile = [cellEls.find(cell => cell.classList.contains('empty'))]
         //determine where the empty tile is
         const emptyRow = Math.floor(cellEls.indexOf(emptyTile[0]) / 4)
-        // console.log('this is the empty row', emptyRow)
         const emptyCol = cellEls.indexOf(emptyTile[0]) % 4
-        // console.log('this is the empty column', emptyCol)
         //update the value of the board array
         if(checkForEmpty(tgtRow, tgtCol, emptyRow, emptyCol)) {
             moveTile(tgtRow, tgtCol, emptyRow, emptyCol)
@@ -153,17 +134,13 @@ function checkWin() {
     //do i just give it an array here that checks to see if the tiles are in the correct order? 
     //I need it to read the current board array
     let curBoardState = board
-    // console.log('this is the current board state in checkWin', curBoardState)
     const winCon = [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]]
-    // console.log('this is winCon inside of checkWin', winCon)
     //and compare it to the winCon array
     //if they match, do something
     function check(curBoardState, winCon) {
         return curBoardState.join() == winCon.join()
     }
-    // console.log(checks(curBoardState, winCon))
     if(check(curBoardState, winCon) === true){
-        // console.log('confirming the curBoardState and winCon match inside checkWin')
         cellEls.forEach((cell) => {
             cell.classList.add('win')
         })
