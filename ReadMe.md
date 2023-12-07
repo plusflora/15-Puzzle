@@ -29,9 +29,7 @@ Upon Completion
 - get shuffle/starting placement to work - Done
 - get restart/shuffle button working - Done
 - expand to 4x4 - Done
-- get move count to work
-- // event listener (Done, console logged out - seems to be more correct that the piece movement event listener)
-- build check win (Do I give an array to match my divs to?) - Done
+- build check win - Done
 - get hover effect on piece - Done 
 - any bonuses listed in User Stories I can get in time for turn in.
 
