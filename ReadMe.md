@@ -7,30 +7,20 @@ A fifteen puzzle is a simple puzzle game. The goal is to get the numbered tiles 
 
 ## Wireframes / Screenshots
 Upon Page Load
-![Page Load](assets/Page%20Load.png)
+![Page Load](assets/puzzle1.PNG)
 
 Expected changes during gameplay
-![During Game](assets/During%20Game.png)
+![During Game](assets/project%202.PNG)
+
 Upon Completion
+![Upon Completion](assets/puzzle3.PNG)
 
-![Upon Completion](assets/Upon%20Completion.png)
-
-After Game + Restart
-![After Game](assets/After%20Game.png)
 
 ## User Stories
 - choose when to start
 - click on the square to move it
-- count number of moves
 - play again / shuffle button
 - hover effect to identify which piece I'm about to move
-- Bonus: click to move 2/3 squares (entire column/row moves)
-- Bonus: Visual Movement instead of instant swaps
-- Bonus: dark mode / light mode
-- Bonus: have a timer + save fastest time
-- Bonus: use a (random?) image + fill in blank spot when puzzle is completed
-- Bonus: save and compare against lowest number of moves
-- Bonus: choose which solve counts (reverse, odds on top, evens on top, columns)
 
 ## Plan of Attack
 - build 3/3 board - Done
@@ -44,3 +34,13 @@ After Game + Restart
 - build check win (Do I give an array to match my divs to?) - Done
 - get hover effect on piece - Done 
 - any bonuses listed in User Stories I can get in time for turn in.
+
+## Planned Future Enhancements
+- count number of moves
+- click to move 2/3 squares (entire column/row moves)
+- Visual Movement instead of instant swaps
+- dark mode / light mode
+- have a timer + save fastest time
+- use a (random?) image + fill in blank spot when puzzle is completed
+- save and compare against lowest number of moves
+- choose which solve counts (reverse, odds on top, evens on top, columns)
